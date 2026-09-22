@@ -1,0 +1,145 @@
+import { Check } from 'lucide-react'
+import { Reveal } from '../components/Reveal'
+import { SectionHeading } from '../components/SectionHeading'
+import { SpotCard } from '../components/SpotCard'
+
+type Plano = {
+  nome: string
+  preco: string
+  precoPrefixo?: string
+  tagline: string
+  publico: string
+  itens: string[]
+  destaque?: boolean
+}
+
+const planos: Plano[] = [
+  {
+    nome: 'Start',
+    preco: 'R$120',
+    tagline: 'Organize seu trabalho.',
+    publico: 'Síndico autônomo',
+    itens: ['Ferramentas de produtividade', 'Sem app para moradores'],
+  },
+  {
+    nome: 'Essencial',
+    preco: 'R$288',
+    tagline: 'Conecte moradores e condomínio.',
+    publico: 'Condomínios pequenos e médios',
+    itens: [
+      'Portal e app dos moradores',
+      'Comunicação e documentos',
+      'Reservas e notificações',
+    ],
+    destaque: true,
+  },
+  {
+    nome: 'Plus',
+    preco: 'R$396',
+    tagline: 'Controle as finanças.',
+    publico: 'Condomínios com gestão financeira própria',
+    itens: [
+      'Módulo financeiro completo',
+      'Contas a pagar e receber',
+      'Fluxo de caixa',
+      'Integração com a FitPay',
+    ],
+  },
+  {
+    nome: 'Professional',
+    preco: 'R$592',
+    tagline: 'Multiplique sua capacidade de administrar.',
+    publico: 'Síndicos profissionais',
+    itens: [
+      'Até 5 condomínios',
+      'Visão consolidada de todos os condomínios',
+      'Operação centralizada em um só lugar',
+    ],
+  },
+  {
+    nome: 'Enterprise',
+    preco: 'R$699',
+    precoPrefixo: 'a partir de',
+    tagline: 'Uma plataforma corporativa de gestão condominial.',
+    publico: 'Grandes condomínios e administradoras',
+    itens: [
+      'Acima de 250 unidades',
+      'Mais de 5 condomínios',
+      'Recursos corporativos',
+      'Atendimento prioritário',
+    ],
+  },
+]
+
+export function Planos() {
+  return (
+    <section id="planos" className="border-t border-[rgba(96,157,255,0.14)] py-24 sm:py-32">
+      <div className="mx-auto max-w-wrap px-5 sm:px-8">
+        <SectionHeading
+          eyebrow="Planos"
+          title="Uma jornada de evolução."
+          lead="Hoje o SindFlow já nasce com potencial para evoluir além de um software de gestão. Comece pelo plano que resolve o seu momento e cresça sem trocar de ferramenta."
+        />
+
+        <div className="mt-14 grid gap-5 md:grid-cols-2 xl:grid-cols-5 xl:gap-4">
+          {planos.map((plano, i) => (
+            <Reveal key={plano.nome} delay={i * 0.08} className={plano.destaque ? 'xl:-mt-4' : ''}>
+              <SpotCard
+                tilt
+                className={`flex h-full flex-col rounded-2xl transition-colors duration-300 ${
+                  plano.destaque
+                    ? 'glass border border-sky/60 shadow-[0_18px_60px_rgba(60,111,214,0.28)]'
+                    : 'border border-[rgba(96,157,255,0.14)] bg-navy/40 hover:border-[rgba(96,157,255,0.4)] hover:shadow-[0_14px_44px_rgba(60,111,214,0.18)]'
+                }`}
+              >
+                <article className="relative flex h-full flex-col p-6">
+                {plano.destaque ? (
+                  <span className="absolute -top-3 left-6 rounded-full bg-azure px-3 py-1 font-mono text-[0.625rem] font-medium uppercase tracking-[0.14em] text-ink">
+                    Recomendado
+                  </span>
+                ) : null}
+
+                <h3 className="font-mono text-xs uppercase tracking-[0.18em] text-sky">
+                  {plano.nome}
+                </h3>
+
+                <p className="mt-4">
+                  {plano.precoPrefixo ? (
+                    <span className="block text-xs text-steel">{plano.precoPrefixo}</span>
+                  ) : null}
+                  <span className="font-display text-3xl font-semibold text-ink">{plano.preco}</span>
+                  <span className="text-sm text-steel">/mês</span>
+                </p>
+
+                <p className="mt-3 font-display text-base font-medium italic leading-snug text-ink">
+                  {plano.tagline}
+                </p>
+
+                <p className="mt-2 text-xs leading-relaxed text-steel">{plano.publico}</p>
+
+                <ul className="mt-5 flex flex-col gap-2.5 border-t border-[rgba(96,157,255,0.14)] pt-5">
+                  {plano.itens.map((item) => (
+                    <li key={item} className="flex items-start gap-2 text-xs leading-relaxed text-steel">
+                      <Check className="mt-0.5 h-3.5 w-3.5 shrink-0 text-sky" aria-hidden="true" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+
+                <a
+                  href="https://app.sindflow.com.br"
+                  className={`mt-auto pt-6 text-center text-sm font-medium transition-colors duration-200 ${
+                    plano.destaque ? 'text-sky hover:text-ink' : 'text-steel hover:text-sky'
+                  }`}
+                >
+                  Começar agora
+                </a>
+                </article>
+              </SpotCard>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
