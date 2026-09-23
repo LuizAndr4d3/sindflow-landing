@@ -1,5 +1,4 @@
 import { Nav } from './components/Nav'
-import { Footer } from './components/Footer'
 import { useSmoothScroll } from './hooks/useSmoothScroll'
 import { CtaFinal } from './sections/CtaFinal'
 import { Diferenciais } from './sections/Diferenciais'
@@ -22,7 +21,6 @@ function App() {
         <Planos />
         <CtaFinal />
       </main>
-      <Footer />
     </>
   )
 }

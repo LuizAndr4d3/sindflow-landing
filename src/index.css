@@ -154,27 +154,4 @@ html.lenis body {
       opacity: 0;
     }
   }
-
-  /* tipografia dos textos legais (Termos de Uso / Política de Privacidade) */
-  .prose-legal h2 {
-    @apply mt-12 font-display text-2xl font-medium text-ink first:mt-0;
-  }
-  .prose-legal h3 {
-    @apply mt-8 font-display text-lg font-medium text-ink;
-  }
-  .prose-legal p {
-    @apply mt-4 text-sm leading-relaxed text-steel sm:text-base;
-  }
-  .prose-legal ul {
-    @apply mt-4 flex list-disc flex-col gap-2 pl-5 text-sm leading-relaxed text-steel marker:text-sky sm:text-base;
-  }
-  .prose-legal li {
-    @apply pl-1;
-  }
-  .prose-legal strong {
-    @apply font-medium text-ink;
-  }
-  .prose-legal a {
-    @apply text-sky underline underline-offset-2 transition-colors duration-200 hover:text-ink;
-  }
 }

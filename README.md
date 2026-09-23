@@ -60,7 +60,7 @@ por linhas de rede.
 3. O Problema (3 dores + fecho editorial)
 4. A Solução (5 frentes + os 10 módulos da v1.0)
 5. Diferenciais (PWA, WhatsApp, segurança, preço) + roadmap discreto
-6. Planos (5 níveis como jornada, Essencial em destaque)
+6. Planos (3 níveis como jornada, Pro em destaque)
 7. CTA final + rodapé
 
 As seções de Equipe e de números de mercado foram removidas por decisão de
@@ -75,4 +75,19 @@ produto: o site fala com o comprador, não com investidores.
 - Acessibilidade: contraste AA, foco visível, navegação por teclado, `aria-label`
   nos elementos gráficos, `prefers-reduced-motion` desativando animações
 - Animações apenas com `transform` e `opacity`
-- SEO: title, meta description, Open Graph, favicon SVG, `lang="pt-BR"`
+- SEO: title, meta description, Open Graph com imagem, favicon, `lang="pt-BR"`
+
+## Assets da marca
+
+Gerados a partir do logo oficial (`logo 3.png`), recortados no símbolo com folga
+uniforme e otimizados. Ficam em `public/`:
+
+| Arquivo | Tamanho | Uso |
+| --- | --- | --- |
+| `logo-mark.png` | 192px | Marca na nav (exibida a 36px, 4x para telas retina) |
+| `favicon-32.png` | 32px | Aba do navegador |
+| `favicon-192.png` | 192px | Android e atalho na tela inicial |
+| `apple-touch-icon.png` | 180px | Atalho no iOS |
+| `og-image.jpg` | 512px | Prévia ao compartilhar o link (WhatsApp, redes) |
+
+Conforme a identidade visual, ícones usam apenas o símbolo, sem o nome.

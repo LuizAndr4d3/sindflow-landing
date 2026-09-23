@@ -9,22 +9,17 @@ const links = [
   { label: 'Contato', href: '#contato', id: 'contato' },
 ]
 
-function Logo({ isHome }: { isHome: boolean }) {
+function Logo() {
   return (
-    <a
-      href={isHome ? '#' : '/'}
-      className="flex items-center gap-2.5"
-      aria-label="SindFlow, voltar ao topo"
-    >
-      <svg viewBox="0 0 32 32" className="h-8 w-8" aria-hidden="true">
-        <rect width="32" height="32" rx="7" fill="#10233F" />
-        <rect x="9" y="7" width="14" height="19" rx="1.5" fill="none" stroke="#609DFF" strokeWidth="1.6" />
-        <rect x="12.2" y="10.5" width="3" height="3" fill="#609DFF" />
-        <rect x="17" y="10.5" width="3" height="3" fill="#2c4a7c" />
-        <rect x="12.2" y="15.5" width="3" height="3" fill="#2c4a7c" />
-        <rect x="17" y="15.5" width="3" height="3" fill="#609DFF" />
-        <rect x="14.5" y="20.5" width="3.4" height="5.5" fill="#3C6FD6" />
-      </svg>
+    <a href="#" className="flex items-center gap-2.5" aria-label="SindFlow, voltar ao topo">
+      <img
+        src="/logo-mark.png"
+        alt=""
+        width={36}
+        height={36}
+        className="h-9 w-9 rounded-[0.5rem]"
+        aria-hidden="true"
+      />
       <span className="font-display text-xl font-medium tracking-tight text-ink">SindFlow</span>
     </a>
   )
@@ -36,7 +31,6 @@ export function Nav() {
   const [active, setActive] = useState('')
   const { scrollYProgress } = useScroll()
   const progress = useSpring(scrollYProgress, { stiffness: 120, damping: 30, restDelta: 0.001 })
-  const isHome = typeof window !== 'undefined' && window.location.pathname === '/'
 
   useEffect(() => {
     let ticking = false
@@ -74,13 +68,13 @@ export function Nav() {
         aria-hidden="true"
       />
       <nav className="mx-auto flex h-[4.5rem] max-w-wrap items-center justify-between px-5 sm:px-8">
-        <Logo isHome={isHome} />
+        <Logo />
 
         <ul className="hidden items-center gap-8 lg:flex">
           {links.map((link) => (
             <li key={link.href} className="relative">
               <a
-                href={isHome ? link.href : `/${link.href}`}
+                href={link.href}
                 aria-current={active === link.id ? 'true' : undefined}
                 className={`text-sm transition-colors duration-200 hover:text-ink ${
                   active === link.id ? 'text-ink' : 'text-steel'
@@ -100,13 +94,13 @@ export function Nav() {
 
         <div className="hidden items-center gap-3 lg:flex">
           <a
-            href="https://app.sindflow.com.br"
+            href="https://painel.sindflow.com.br"
             className="rounded-full border border-[rgba(96,157,255,0.25)] px-5 py-2 text-sm text-ink transition-all duration-200 hover:border-sky hover:bg-[rgba(96,157,255,0.08)]"
           >
             Entrar
           </a>
           <a
-            href="https://app.sindflow.com.br"
+            href="https://painel.sindflow.com.br"
             className="btn-shine rounded-full bg-azure px-5 py-2 text-sm font-medium text-ink transition-all duration-200 hover:bg-sky hover:text-midnight"
           >
             Acessar painel
@@ -130,7 +124,7 @@ export function Nav() {
             {links.map((link) => (
               <li key={link.href}>
                 <a
-                  href={isHome ? link.href : `/${link.href}`}
+                  href={link.href}
                   className="block rounded-lg px-3 py-3 text-base text-ink transition-colors hover:bg-[rgba(96,157,255,0.08)]"
                   onClick={() => setOpen(false)}
                 >
@@ -140,7 +134,7 @@ export function Nav() {
             ))}
           </ul>
           <a
-            href="https://app.sindflow.com.br"
+            href="https://painel.sindflow.com.br"
             className="mt-4 block rounded-full bg-azure px-5 py-3 text-center text-sm font-medium text-ink"
           >
             Acessar painel

@@ -26,7 +26,7 @@ export function CtaFinal() {
           </p>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
             <Magnetic>
-              <Button href="https://app.sindflow.com.br">Acessar o painel</Button>
+              <Button href="https://painel.sindflow.com.br">Acessar o painel</Button>
             </Magnetic>
             <Button href="https://sindflow.com.br" variant="ghost">
               Falar com o time
@@ -34,6 +34,19 @@ export function CtaFinal() {
           </div>
         </Reveal>
       </div>
+
+      <footer className="relative border-t border-[rgba(96,157,255,0.14)]">
+        <div className="mx-auto flex max-w-wrap flex-col items-center justify-between gap-4 px-5 py-8 sm:flex-row sm:px-8">
+          <p className="font-display text-lg font-medium text-ink">SindFlow</p>
+          <p className="text-sm text-steel">Gestão Condominial Inteligente</p>
+          <a
+            href="https://sindflow.com.br"
+            className="font-mono text-xs text-steel transition-colors hover:text-sky"
+          >
+            sindflow.com.br
+          </a>
+        </div>
+      </footer>
     </section>
   )
 }

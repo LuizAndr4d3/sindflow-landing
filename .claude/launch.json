@@ -5,8 +5,7 @@
       "name": "sindflow-landing",
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "dev"],
-      "port": 5173,
-      "cwd": "C:\\Users\\joaov\\Downloads\\sindflow-landing"
+      "port": 5173
     }
   ]
 }
