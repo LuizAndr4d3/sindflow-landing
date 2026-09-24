@@ -26,7 +26,7 @@ export function CtaFinal() {
           </p>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
             <Magnetic>
-              <Button href="https://painel.sindflow.com.br">Acessar o painel</Button>
+              <Button href="https://app.sindflow.com.br">Acessar o painel</Button>
             </Magnetic>
             <Button href="https://sindflow.com.br" variant="ghost">
               Falar com o time

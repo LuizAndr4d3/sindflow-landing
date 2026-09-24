@@ -70,7 +70,7 @@ produto: o site fala com o comprador, não com investidores.
 
 - Copy oficial em pt-BR, sem travessões, IA citada apenas como roadmap futuro
 - Parceiro de pagamentos: FitPay (confirmado)
-- Links de painel apontando para https://painel.sindflow.com.br (confirmado)
+- Links de painel apontando para https://app.sindflow.com.br (confirmado)
 - Responsivo mobile-first, testado em 390, 768 e 1440 px, sem overflow horizontal
 - Acessibilidade: contraste AA, foco visível, navegação por teclado, `aria-label`
   nos elementos gráficos, `prefers-reduced-motion` desativando animações

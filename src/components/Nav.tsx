@@ -94,13 +94,13 @@ export function Nav() {
 
         <div className="hidden items-center gap-3 lg:flex">
           <a
-            href="https://painel.sindflow.com.br"
+            href="https://app.sindflow.com.br"
             className="rounded-full border border-[rgba(96,157,255,0.25)] px-5 py-2 text-sm text-ink transition-all duration-200 hover:border-sky hover:bg-[rgba(96,157,255,0.08)]"
           >
             Entrar
           </a>
           <a
-            href="https://painel.sindflow.com.br"
+            href="https://app.sindflow.com.br"
             className="btn-shine rounded-full bg-azure px-5 py-2 text-sm font-medium text-ink transition-all duration-200 hover:bg-sky hover:text-midnight"
           >
             Acessar painel
@@ -134,7 +134,7 @@ export function Nav() {
             ))}
           </ul>
           <a
-            href="https://painel.sindflow.com.br"
+            href="https://app.sindflow.com.br"
             className="mt-4 block rounded-full bg-azure px-5 py-3 text-center text-sm font-medium text-ink"
           >
             Acessar painel

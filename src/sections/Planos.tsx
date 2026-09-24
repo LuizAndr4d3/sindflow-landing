@@ -119,7 +119,7 @@ export function Planos() {
                   </ul>
 
                   <a
-                    href="https://painel.sindflow.com.br"
+                    href="https://app.sindflow.com.br"
                     className={`mt-auto pt-7 text-center text-sm font-medium transition-colors duration-200 ${
                       plano.destaque ? 'text-sky hover:text-ink' : 'text-steel hover:text-sky'
                     }`}
