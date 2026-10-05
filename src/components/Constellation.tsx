@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import { quandoOcioso } from '../lib/ocioso'
 
 type Node = { x: number; y: number; vx: number; vy: number }
 
@@ -92,19 +93,35 @@ export function Constellation({ className = '' }: { className?: string }) {
       cancelAnimationFrame(raf)
     }
 
-    resize()
-    const io = new IntersectionObserver(([entry]) => (entry.isIntersecting ? start() : stop()), {
-      threshold: 0,
+    // começa quando o navegador fica livre, para não disputar a primeira pintura
+    let encerrar = () => {}
+    const cancelarAgendamento = quandoOcioso(() => {
+      resize()
+      const io = new IntersectionObserver(([entry]) => (entry.isIntersecting ? start() : stop()), {
+        threshold: 0,
+      })
+      io.observe(canvas)
+      window.addEventListener('resize', resize)
+      canvas.style.opacity = '1'
+      encerrar = () => {
+        stop()
+        io.disconnect()
+        window.removeEventListener('resize', resize)
+      }
     })
-    io.observe(canvas)
-    window.addEventListener('resize', resize)
 
     return () => {
-      stop()
-      io.disconnect()
-      window.removeEventListener('resize', resize)
+      cancelarAgendamento()
+      encerrar()
     }
   }, [])
 
-  return <canvas ref={canvasRef} className={className} aria-hidden="true" />
+  return (
+    <canvas
+      ref={canvasRef}
+      className={className}
+      style={{ opacity: 0, transition: 'opacity 1.2s ease-out' }}
+      aria-hidden="true"
+    />
+  )
 }

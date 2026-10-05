@@ -55,7 +55,7 @@ export function Diferenciais() {
 
         <Reveal className="mt-12">
           <div className="rounded-2xl border border-[rgba(96,157,255,0.1)] px-7 py-6">
-            <p className="eyebrow text-steel/70">No roadmap</p>
+            <p className="eyebrow text-steel">Próximos passos</p>
             <p className="mt-3 max-w-3xl text-sm leading-relaxed text-steel/80">
               Em estudo para versões futuras: inteligência artificial para apoiar as decisões
               do síndico, novos recursos financeiros e integração com câmeras. São evoluções

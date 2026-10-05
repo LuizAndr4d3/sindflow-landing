@@ -33,15 +33,17 @@ const frentes = [
 
 const modulos = [
   'Dashboard',
-  'Central de Alertas',
-  'Agenda',
+  'Alertas',
+  'Agendas',
   'Equipamentos',
+  'Mandatórios Legais',
+  'Serviços',
   'Checklist',
+  'Moradores',
+  'Comunicações',
+  'Solicitações e Ocorrências',
   'Contratos',
   'Financeiro',
-  'Comunicados',
-  'Solicitações',
-  'Configurações',
 ]
 
 export function Solucao() {
@@ -71,17 +73,29 @@ export function Solucao() {
           ))}
 
           <Reveal delay={0.4}>
-            <div className="flex h-full flex-col justify-center rounded-2xl border border-dashed border-[rgba(96,157,255,0.25)] p-7">
-              <p className="font-display text-3xl font-semibold text-sky">10</p>
-              <p className="mt-1 text-sm text-steel">
-                módulos na versão 1.0, funcionando em produção hoje.
+            <div className="relative flex h-full flex-col justify-end overflow-hidden rounded-2xl border border-sky/30 bg-navy/40 p-7">
+              <div
+                className="pointer-events-none absolute inset-0"
+                style={{
+                  background:
+                    'radial-gradient(ellipse 90% 80% at 90% 0%, rgba(60,111,214,0.3), transparent 65%)',
+                }}
+                aria-hidden="true"
+              />
+              <p className="relative">
+                <span className="block font-display text-7xl font-semibold leading-none tracking-tight text-sky">
+                  12
+                </span>{' '}
+                <span className="mt-3 block text-sm leading-relaxed text-steel">
+                  módulos prontos para usar hoje.
+                </span>
               </p>
             </div>
           </Reveal>
         </div>
 
         <Reveal className="mt-14">
-          <p className="eyebrow">Os 10 módulos</p>
+          <p className="eyebrow">Os 12 módulos</p>
           <div className="marquee-mask mt-5 overflow-hidden" aria-label={modulos.join(', ')}>
             <div className="marquee-track flex gap-2.5">
               {[...modulos, ...modulos].map((mod, i) => (

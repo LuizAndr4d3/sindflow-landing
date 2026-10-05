@@ -1,9 +1,11 @@
-# SindFlow — Landing Page
+# Landing page do SindFlow
 
 Landing page oficial do SindFlow, plataforma de gestão condominial inteligente.
 Site estático, single-page, pronto para hospedar em qualquer VPS ou CDN.
 
 ## Rodar localmente
+
+Requer Node.js 20.19 ou mais novo (exigência do Vite 8). Confira com `node -v`.
 
 ```bash
 npm install
@@ -16,21 +18,34 @@ npm run preview   # serve o build de produção localmente
 
 - **Vite + React + TypeScript**
 - **Tailwind CSS v3** com design tokens no `tailwind.config.js`
-- **Framer Motion** para reveals, stagger do hero, contadores e micro-interações
+- **Framer Motion** para reveals, stagger do hero e micro-interações
 - **GSAP + ScrollTrigger** para parallax da torre no hero
 - **Lenis** para scroll suave sincronizado com o ScrollTrigger
 - **lucide-react** para ícones
-- Fontes via Google Fonts: Fraunces (display), Inter (corpo), JetBrains Mono (dados e labels)
+- Fontes servidas pelo próprio site em `public/fonts/` (sem Google Fonts): Fraunces
+  (display), Inter (corpo) e JetBrains Mono (dados e labels), só o subset latin
+
+## Desempenho (como a página carrega)
+
+- A primeira pintura monta só o menu e o hero. O resto da página fica em
+  `src/sections/Restante.tsx`, carregado em paralelo num arquivo separado
+- GSAP, ScrollTrigger e Lenis só carregam depois da primeira pintura
+  (`src/lib/ocioso.ts`): não são necessários para o conteúdo aparecer
+- As fontes do título e do texto são pré-carregadas no `index.html`, o que evita
+  o "pulo" do layout quando a fonte chega
+- Não escreva prefixos como `-webkit-` à mão no CSS: o autoprefixer já cuida disso.
+  Escritos à mão, o minificador do build pode descartar a versão sem prefixo (foi o
+  que tirou o desfoque do menu em Chrome e Firefox)
 
 ## Camada de animações
 
 - Scroll suave (Lenis), desativado com `prefers-reduced-motion`
 - Hero: rede de pontos conectados em canvas (pausa fora da viewport), título com
-  stagger letra a letra em 3D, parallax de saída, indicador de scroll
+  stagger palavra a palavra em 3D, parallax de saída, indicador de scroll
 - Torre: janelas acendem em sequência, flicker ambiente contínuo, chips de eventos
 - Títulos de seção revelados palavra a palavra ao entrar na viewport
 - Cards com spotlight que segue o cursor; planos com tilt 3D sutil
-- Marquee infinito dos 10 módulos (pausa no hover)
+- Marquee infinito dos 12 módulos (pausa no hover)
 - Nav com scrollspy (seção ativa marcada), barra de progresso e glassmorphism
 - Botões magnéticos com física de mola e brilho que atravessa no hover
 - Grain cinematográfico global
@@ -55,13 +70,15 @@ por linhas de rede.
 
 ## Seções
 
-1. Nav fixa com barra de progresso de scroll, âncoras e CTA para o painel
-2. Hero com stagger do título, torre animada e parallax
+1. Nav fixa com barra de progresso de scroll, âncoras e acesso ao app
+2. Hero ("Quer uma gestão mais leve?") com stagger do título, torre animada e parallax
 3. O Problema (3 dores + fecho editorial)
-4. A Solução (5 frentes + os 10 módulos da v1.0)
+4. A Solução (5 frentes + os 12 módulos)
 5. Diferenciais (PWA, WhatsApp, segurança, preço) + roadmap discreto
-6. Planos (3 níveis como jornada, Pro em destaque)
-7. CTA final + rodapé
+6. Planos (Lite, Pro e Max, com o Pro em destaque) + condições comerciais
+7. Contato (#contato): WhatsApp, e-mail e agendamento de demonstração
+8. Chamada final "Comece hoje"
+9. Rodapé com contatos e copyright
 
 As seções de Equipe e de números de mercado foram removidas por decisão de
 produto: o site fala com o comprador, não com investidores.
@@ -70,12 +87,23 @@ produto: o site fala com o comprador, não com investidores.
 
 - Copy oficial em pt-BR, sem travessões, IA citada apenas como roadmap futuro
 - Parceiro de pagamentos: FitPay (confirmado)
-- Links de painel apontando para https://app.sindflow.com.br (confirmado)
+- Contatos e links centralizados em `src/config/contato.ts`: número e mensagens do
+  WhatsApp, e-mail, site e app (`https://app.sindflow.com.br`). Nenhum componente
+  tem número, e-mail ou URL escrito direto; para trocar, edite só esse arquivo
+- Os botões "Começar agora" dos planos estão sem destino de propósito: vão apontar
+  para a página de vendas, que ainda será criada
 - Responsivo mobile-first, testado em 390, 768 e 1440 px, sem overflow horizontal
-- Acessibilidade: contraste AA, foco visível, navegação por teclado, `aria-label`
-  nos elementos gráficos, `prefers-reduced-motion` desativando animações
+- Acessibilidade WCAG 2.2 AA verificada com axe-core (zero violações nas três
+  larguras): contraste, foco visível, link "Pular para o conteúdo", menu que fecha
+  com Esc, alvos de toque de 44px e `prefers-reduced-motion` respeitado
+- O azul de destaque em texto pequeno é `text-flow-texto` (#207EEA), 1% mais claro
+  que o oficial #1E7BE8, que fica logo abaixo do contraste mínimo nesse tamanho.
+  No logotipo o oficial continua valendo
 - Animações apenas com `transform` e `opacity`
-- SEO: title, meta description, Open Graph com imagem, favicon, `lang="pt-BR"`
+- SEO: title, meta description, canonical, Open Graph, favicon, `robots.txt`,
+  `sitemap.xml` e `lang="pt-BR"`
+- Lighthouse: 100 em tudo no desktop; no celular 91 de desempenho e 100 em
+  acessibilidade, boas práticas e SEO
 
 ## Assets da marca
 
@@ -84,7 +112,9 @@ uniforme e otimizados. Ficam em `public/`:
 
 | Arquivo | Tamanho | Uso |
 | --- | --- | --- |
-| `logo-mark.png` | 192px | Marca na nav (exibida a 36px, 4x para telas retina) |
+| `logo-mark.webp` | 108px | Marca no menu e no rodapé (1,9 KB) |
+| `logo-mark.png` | 192px | Original de onde os outros tamanhos são gerados |
+| `favicon.ico` | 32px | Navegadores e robôs que pedem o ícone por esse nome |
 | `favicon-32.png` | 32px | Aba do navegador |
 | `favicon-192.png` | 192px | Android e atalho na tela inicial |
 | `apple-touch-icon.png` | 180px | Atalho no iOS |

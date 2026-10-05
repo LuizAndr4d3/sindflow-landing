@@ -1,6 +1,8 @@
 import { motion, useScroll, useSpring } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import { useEffect, useState } from 'react'
+import { APP } from '../config/contato'
+import { LogoMark, Wordmark } from './Logo'
 
 const links = [
   { label: 'Problema', href: '#problema', id: 'problema' },
@@ -12,15 +14,8 @@ const links = [
 function Logo() {
   return (
     <a href="#" className="flex items-center gap-2.5" aria-label="SindFlow, voltar ao topo">
-      <img
-        src="/logo-mark.png"
-        alt=""
-        width={36}
-        height={36}
-        className="h-9 w-9 rounded-[0.5rem]"
-        aria-hidden="true"
-      />
-      <span className="font-display text-xl font-medium tracking-tight text-ink">SindFlow</span>
+      <LogoMark />
+      <Wordmark className="text-xl" />
     </a>
   )
 }
@@ -55,6 +50,13 @@ export function Nav() {
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
+
+  useEffect(() => {
+    if (!open) return
+    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setOpen(false)
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [open])
 
   return (
     <header
@@ -94,14 +96,14 @@ export function Nav() {
 
         <div className="hidden items-center gap-3 lg:flex">
           <a
-            href="https://app.sindflow.com.br"
+            href={APP}
             className="rounded-full border border-[rgba(96,157,255,0.25)] px-5 py-2 text-sm text-ink transition-all duration-200 hover:border-sky hover:bg-[rgba(96,157,255,0.08)]"
           >
             Entrar
           </a>
           <a
-            href="https://app.sindflow.com.br"
-            className="btn-shine rounded-full bg-azure px-5 py-2 text-sm font-medium text-ink transition-all duration-200 hover:bg-sky hover:text-midnight"
+            href={APP}
+            className="btn-shine rounded-full bg-azure px-5 py-2 text-sm font-medium text-white transition-all duration-200 hover:bg-sky hover:text-midnight"
           >
             Acessar painel
           </a>
@@ -109,8 +111,9 @@ export function Nav() {
 
         <button
           type="button"
-          className="flex h-10 w-10 items-center justify-center rounded-full text-ink lg:hidden"
+          className="flex h-11 w-11 items-center justify-center rounded-full text-ink lg:hidden"
           aria-expanded={open}
+          aria-controls="menu-celular"
           aria-label={open ? 'Fechar menu' : 'Abrir menu'}
           onClick={() => setOpen((v) => !v)}
         >
@@ -119,7 +122,7 @@ export function Nav() {
       </nav>
 
       {open ? (
-        <div className="glass border-b border-[rgba(96,157,255,0.14)] px-5 pb-6 pt-2 lg:hidden">
+        <div id="menu-celular" className="glass border-b border-[rgba(96,157,255,0.14)] px-5 pb-6 pt-2 lg:hidden">
           <ul className="flex flex-col gap-1">
             {links.map((link) => (
               <li key={link.href}>
@@ -134,8 +137,8 @@ export function Nav() {
             ))}
           </ul>
           <a
-            href="https://app.sindflow.com.br"
-            className="mt-4 block rounded-full bg-azure px-5 py-3 text-center text-sm font-medium text-ink"
+            href={APP}
+            className="mt-4 block rounded-full bg-azure px-5 py-3 text-center text-sm font-medium text-white"
           >
             Acessar painel
           </a>

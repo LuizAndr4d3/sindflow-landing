@@ -30,25 +30,24 @@ export function SectionHeading({ eyebrow, title, lead, align = 'left' }: Section
     if (typeof title !== 'string') return title
     const words = title.split(' ')
     return (
-      <motion.span
-        variants={wordContainer}
-        initial={reduce ? false : 'hidden'}
-        whileInView="show"
-        viewport={{ once: true, margin: '-80px' }}
-        aria-label={title}
-      >
-        {words.map((w, i) => (
-          <span
-            key={i}
-            className="inline-block overflow-hidden pb-[0.08em] align-bottom"
-            aria-hidden="true"
-          >
-            <motion.span variants={word} className="inline-block will-change-transform">
-              {i < words.length - 1 ? w + NBSP : w}
-            </motion.span>
-          </span>
-        ))}
-      </motion.span>
+      <>
+        <span className="sr-only">{title}</span>
+        <motion.span
+          variants={wordContainer}
+          initial={reduce ? false : 'hidden'}
+          whileInView="show"
+          viewport={{ once: true, margin: '-80px' }}
+          aria-hidden="true"
+        >
+          {words.map((w, i) => (
+            <span key={i} className="inline-block overflow-hidden pb-[0.08em] align-bottom">
+              <motion.span variants={word} className="inline-block will-change-transform">
+                {i < words.length - 1 ? w + NBSP : w}
+              </motion.span>
+            </span>
+          ))}
+        </motion.span>
+      </>
     )
   }
 

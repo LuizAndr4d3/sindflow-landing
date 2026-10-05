@@ -1,4 +1,5 @@
 import { motion, useReducedMotion } from 'framer-motion'
+import { Fragment } from 'react'
 import { EyeOff, FolderOpen, TrendingDown } from 'lucide-react'
 import { Reveal } from '../components/Reveal'
 import { SectionHeading } from '../components/SectionHeading'
@@ -32,7 +33,7 @@ const quoteContainer = {
 }
 
 const quoteWord = {
-  hidden: { opacity: 0.12 },
+  hidden: { opacity: 0 },
   show: { opacity: 1, transition: { duration: 0.5, ease: EASE } },
 }
 
@@ -62,21 +63,23 @@ export function Problema() {
         </div>
 
         <motion.p
-          className="mx-auto mt-20 max-w-2xl text-center font-display text-2xl font-medium italic leading-snug text-ink sm:text-3xl"
+          className="mx-auto mt-20 max-w-2xl text-center font-display text-2xl font-medium italic leading-snug text-ink [text-wrap:balance] sm:text-3xl"
           variants={quoteContainer}
           initial={reduce ? false : 'hidden'}
           whileInView="show"
           viewport={{ once: true, margin: '-100px' }}
         >
-          {FECHO_A.split(' ').map((w, i) => (
-            <motion.span key={`a-${i}`} variants={quoteWord} className="inline-block">
-              {w}&nbsp;
-            </motion.span>
-          ))}
-          {FECHO_B.split(' ').map((w, i) => (
-            <motion.span key={`b-${i}`} variants={quoteWord} className="inline-block text-sky">
-              {w}&nbsp;
-            </motion.span>
+          {[FECHO_A, FECHO_B].map((frase, f) => (
+            <span key={f} className={f === 1 ? 'block text-sky' : 'block'}>
+              {frase.split(' ').map((w, i) => (
+                <Fragment key={i}>
+                  {i > 0 ? ' ' : null}
+                  <motion.span variants={quoteWord} className="inline-block">
+                    {w}
+                  </motion.span>
+                </Fragment>
+              ))}
+            </span>
           ))}
         </motion.p>
       </div>

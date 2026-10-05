@@ -1,18 +1,24 @@
 import { Button } from '../components/Button'
+import { Constellation } from '../components/Constellation'
 import { Magnetic } from '../components/Magnetic'
 import { Reveal } from '../components/Reveal'
+import { APP, MENSAGEM_GERAL, NOVA_ABA, whatsappLink } from '../config/contato'
 
 export function CtaFinal() {
   return (
-    <section id="contato" className="relative overflow-hidden border-t border-[rgba(96,157,255,0.14)]">
+    <section className="relative overflow-hidden border-t border-[rgba(96,157,255,0.14)]">
+      <div className="brilho-divisa-cima pointer-events-none absolute inset-0" aria-hidden="true" />
+      {/* eco da rede do hero: aparece nas bordas e some no centro, para não competir com o texto */}
       <div
-        className="pointer-events-none absolute inset-0"
+        className="pointer-events-none absolute inset-0 opacity-70"
         style={{
-          background:
-            'radial-gradient(ellipse 70% 80% at 50% 110%, rgba(60,111,214,0.22), transparent 65%)',
+          maskImage: 'radial-gradient(ellipse 42% 60% at 50% 45%, transparent 35%, black 100%)',
+          WebkitMaskImage: 'radial-gradient(ellipse 42% 60% at 50% 45%, transparent 35%, black 100%)',
         }}
         aria-hidden="true"
-      />
+      >
+        <Constellation className="h-full w-full" />
+      </div>
 
       <div className="relative mx-auto max-w-wrap px-5 py-28 text-center sm:px-8 sm:py-36">
         <Reveal>
@@ -21,32 +27,21 @@ export function CtaFinal() {
             Leve o condomínio para um só lugar.
           </h2>
           <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-steel sm:text-lg">
-            Acesse o painel e conheça a plataforma que já está em produção, ou fale com o
-            time para entender qual plano faz sentido para o seu condomínio.
+            Agende uma demonstração gratuita de 20 minutos ou fale com o time para entender qual
+            plano faz sentido para o seu condomínio.
           </p>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
             <Magnetic>
-              <Button href="https://app.sindflow.com.br">Acessar o painel</Button>
+              <Button href={whatsappLink(MENSAGEM_GERAL)} {...NOVA_ABA}>
+                Agendar demonstração
+              </Button>
             </Magnetic>
-            <Button href="https://sindflow.com.br" variant="ghost">
-              Falar com o time
+            <Button href={APP} variant="ghost">
+              Acessar o painel
             </Button>
           </div>
         </Reveal>
       </div>
-
-      <footer className="relative border-t border-[rgba(96,157,255,0.14)]">
-        <div className="mx-auto flex max-w-wrap flex-col items-center justify-between gap-4 px-5 py-8 sm:flex-row sm:px-8">
-          <p className="font-display text-lg font-medium text-ink">SindFlow</p>
-          <p className="text-sm text-steel">Gestão Condominial Inteligente</p>
-          <a
-            href="https://sindflow.com.br"
-            className="font-mono text-xs text-steel transition-colors hover:text-sky"
-          >
-            sindflow.com.br
-          </a>
-        </div>
-      </footer>
     </section>
   )
 }

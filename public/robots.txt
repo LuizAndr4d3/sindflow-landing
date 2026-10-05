@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sindflow.com.br/sitemap.xml

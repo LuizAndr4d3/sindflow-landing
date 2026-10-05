@@ -9,6 +9,11 @@ export default {
         surface: '#16294A',
         azure: '#3C6FD6',
         sky: '#609DFF',
+        flow: {
+          DEFAULT: '#1E7BE8',
+          // mesmo azul ~1% mais claro: em texto pequeno o oficial fica abaixo de 4,5:1
+          texto: '#207EEA',
+        },
         ink: '#EAF0F8',
         steel: '#8FA6C4',
       },
