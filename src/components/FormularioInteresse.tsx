@@ -2,8 +2,12 @@ import { useEffect, useRef, useState, type FormEvent, type ReactNode } from 'rea
 import { motion, useReducedMotion } from 'framer-motion'
 import { CheckCircle2, X } from 'lucide-react'
 import { LEAD_ENDPOINT, MENSAGEM_GERAL, NOVA_ABA, whatsappLink } from '../config/contato'
+import { MOSTRAR_PREMIUM } from '../config/planos'
 
-const PLANOS = ['Lite', 'Pro', 'Max', 'Ainda não sei'] as const
+// o Premium só entra na lista quando o card dele estiver visível
+const PLANOS = (['Lite', 'Pro', 'Max', 'Premium', 'Ainda não sei'] as const).filter(
+  (p) => MOSTRAR_PREMIUM || p !== 'Premium',
+)
 const CANAIS = ['WhatsApp', 'Ligação', 'E-mail'] as const
 const HORARIOS = ['Manhã', 'Tarde', 'Noite', 'Qualquer horário'] as const
 

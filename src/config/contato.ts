@@ -12,7 +12,10 @@ export const MENSAGEM_GERAL =
   'Olá! Vim pelo site do SindFlow e gostaria de agendar uma demonstração.'
 
 export const MENSAGEM_ASSESSORIA =
-  'Olá! Vim pelo site do SindFlow e gostaria de saber mais sobre o plano com assessoria contábil e gerencial.'
+  'Olá! Vim pelo site do SindFlow e gostaria de falar com um especialista sobre o plano Premium, com assessoria contábil e financeira.'
+
+export const MENSAGEM_DIAGNOSTICO =
+  'Olá! Vim pelo site do SindFlow e gostaria de solicitar o diagnóstico gratuito do meu condomínio.'
 
 export const mensagemPlano = (plano: string) =>
   `Olá! Tenho interesse no plano ${plano} do SindFlow e gostaria de agendar uma demonstração.`

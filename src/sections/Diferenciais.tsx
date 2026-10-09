@@ -1,4 +1,5 @@
 import { Layers, MessageCircle, ShieldCheck, Smartphone } from 'lucide-react'
+import { RedeDeFundo } from '../components/RedeDeFundo'
 import { Reveal } from '../components/Reveal'
 import { SectionHeading } from '../components/SectionHeading'
 import { SpotCard } from '../components/SpotCard'
@@ -28,8 +29,9 @@ const diferenciais = [
 
 export function Diferenciais() {
   return (
-    <section className="border-t border-[rgba(96,157,255,0.14)] py-24 sm:py-32">
-      <div className="mx-auto max-w-wrap px-5 sm:px-8">
+    <section className="relative border-t border-[rgba(96,157,255,0.14)] py-24 sm:py-32">
+      <RedeDeFundo />
+      <div className="relative mx-auto max-w-wrap px-5 sm:px-8">
         <SectionHeading
           eyebrow="Diferenciais"
           title="O que só o SindFlow entrega."
