@@ -1,5 +1,6 @@
 import { ArrowUpRight, Mail, MessageCircle } from 'lucide-react'
 import { Button } from '../components/Button'
+import { RedeDeFundo } from '../components/RedeDeFundo'
 import { Reveal } from '../components/Reveal'
 import { SectionHeading } from '../components/SectionHeading'
 import { SpotCard } from '../components/SpotCard'
@@ -30,8 +31,9 @@ const canais = [
 
 export function Contato() {
   return (
-    <section id="contato" className="border-t border-[rgba(96,157,255,0.14)] py-24 sm:py-32">
-      <div className="mx-auto grid max-w-wrap gap-12 px-5 sm:px-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-16">
+    <section id="contato" className="relative border-t border-[rgba(96,157,255,0.14)] py-24 sm:py-32">
+      <RedeDeFundo foco="esquerda" />
+      <div className="relative mx-auto grid max-w-wrap gap-12 px-5 sm:px-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-16">
         <div>
           <SectionHeading
             eyebrow="Contato"

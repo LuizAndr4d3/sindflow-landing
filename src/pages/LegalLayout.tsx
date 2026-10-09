@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react'
 import { Footer } from '../components/Footer'
 import { Nav } from '../components/Nav'
+import { RedeDeFundo } from '../components/RedeDeFundo'
 import { Reveal } from '../components/Reveal'
 import { useSmoothScroll } from '../hooks/useSmoothScroll'
 
@@ -30,6 +31,7 @@ export function LegalLayout({ eyebrow, title, updatedAt, children }: LegalLayout
             }}
             aria-hidden="true"
           />
+          <RedeDeFundo />
 
           <div className="relative mx-auto max-w-wrap px-5 sm:px-8">
             <Reveal>

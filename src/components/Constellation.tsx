@@ -11,7 +11,14 @@ const SPEED = 0.16
  * de condomínios e módulos. Pausa fora da viewport e respeita
  * prefers-reduced-motion.
  */
-export function Constellation({ className = '' }: { className?: string }) {
+type ConstellationProps = {
+  className?: string
+  /** Área (px²) por ponto: menor = rede mais densa. */
+  densidade?: number
+  maximo?: number
+}
+
+export function Constellation({ className = '', densidade = 16000, maximo = 70 }: ConstellationProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
   useEffect(() => {
@@ -36,7 +43,7 @@ export function Constellation({ className = '' }: { className?: string }) {
       canvas.width = w * dpr
       canvas.height = h * dpr
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
-      const count = Math.min(70, Math.floor((w * h) / 16000))
+      const count = Math.min(maximo, Math.floor((w * h) / densidade))
       nodes = Array.from({ length: count }, () => ({
         x: Math.random() * w,
         y: Math.random() * h,
@@ -114,7 +121,7 @@ export function Constellation({ className = '' }: { className?: string }) {
       cancelarAgendamento()
       encerrar()
     }
-  }, [])
+  }, [densidade, maximo])
 
   return (
     <canvas
