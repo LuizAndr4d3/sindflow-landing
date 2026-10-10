@@ -32,6 +32,7 @@ const planos: Plano[] = [
       'Equipamentos e manutenção',
       'Obrigações legais',
       'Serviços e checklists',
+      'Gestão de documentos',
     ],
   },
   {
