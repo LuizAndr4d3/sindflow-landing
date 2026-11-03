@@ -5,6 +5,11 @@ export const SITE = 'https://sindflow.com.br'
 export const APP = 'https://app.sindflow.com.br'
 export const APP_LOGIN = `${APP}/login`
 
+export const RAZAO_SOCIAL = 'SINDFLOW LTDA'
+export const CNPJ = '69.810.763/0001-02'
+export const INSTAGRAM_USUARIO = '@sindflow'
+export const INSTAGRAM_URL = 'https://www.instagram.com/sindflow/'
+
 export const whatsappLink = (mensagem: string) =>
   `https://wa.me/${WHATSAPP_NUMERO}?text=${encodeURIComponent(mensagem)}`
 

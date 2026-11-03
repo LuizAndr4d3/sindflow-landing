@@ -1,13 +1,18 @@
 import { useEffect, useState } from 'react'
 import {
   APP_LOGIN,
+  CNPJ,
   EMAIL,
+  INSTAGRAM_URL,
+  INSTAGRAM_USUARIO,
   MENSAGEM_GERAL,
   NOVA_ABA,
+  RAZAO_SOCIAL,
   SITE,
   WHATSAPP_EXIBICAO,
   whatsappLink,
 } from '../config/contato'
+import { IconeInstagram } from './IconeInstagram'
 import { LogoMark, Wordmark } from './Logo'
 
 const link =
@@ -43,6 +48,18 @@ export function Footer() {
               </a>
             </li>
             <li>
+              <a
+                href={INSTAGRAM_URL}
+                {...NOVA_ABA}
+                aria-label={`Instagram ${INSTAGRAM_USUARIO}`}
+                className={link}
+              >
+                {/* ícone em linha com o texto, para o @sindflow ficar na mesma altura dos outros links */}
+                <IconeInstagram className="mr-1.5 inline-block h-4 w-4 align-[-0.1875rem]" aria-hidden="true" />
+                {INSTAGRAM_USUARIO}
+              </a>
+            </li>
+            <li>
               <a href={APP_LOGIN} className={`font-mono text-xs ${link}`}>
                 {SITE.replace('https://', '')}
               </a>
@@ -50,8 +67,10 @@ export function Footer() {
           </ul>
         </div>
 
-        <p className="mt-8 border-t border-[rgba(96,157,255,0.1)] pt-6 text-center text-xs text-steel/80 md:text-left">
-          © {ano} SindFlow. Todos os direitos reservados.
+        {/* nowrap no CNPJ: no celular a linha quebra entre as frases, nunca no meio do número */}
+        <p className="mt-8 border-t border-[rgba(96,157,255,0.1)] pt-6 text-center text-xs text-steel [text-wrap:balance] md:text-left">
+          © {ano} {RAZAO_SOCIAL}. <span className="whitespace-nowrap">CNPJ {CNPJ}.</span> Todos os
+          direitos reservados.
         </p>
       </div>
     </footer>

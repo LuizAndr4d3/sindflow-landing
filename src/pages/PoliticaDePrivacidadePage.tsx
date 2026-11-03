@@ -1,3 +1,4 @@
+import { CNPJ, RAZAO_SOCIAL } from '../config/contato'
 import { LegalLayout } from './LegalLayout'
 
 export function PoliticaDePrivacidadePage() {
@@ -11,14 +12,16 @@ export function PoliticaDePrivacidadePage() {
         Esta Política de Privacidade explica como o SindFlow coleta, usa, armazena e protege os
         dados pessoais de síndicos, administradoras, moradores e demais usuários da plataforma
         ("você"), em conformidade com a Lei Geral de Proteção de Dados Pessoais (Lei nº
-        13.709/2018 – LGPD). Ao utilizar o SindFlow, você concorda com as práticas descritas
+        13.709/2018, LGPD). Ao utilizar o SindFlow, você concorda com as práticas descritas
         nesta Política.
       </p>
 
       <h2>1. Quem é o controlador dos dados</h2>
       <p>
-        O SindFlow é o controlador dos dados pessoais tratados na plataforma para as finalidades
-        de operação do serviço descritas abaixo. Para condomínios que utilizam o SindFlow, o
+        O SindFlow, serviço oferecido por {RAZAO_SOCIAL}, inscrita no CNPJ{' '}
+        <span className="whitespace-nowrap">{CNPJ}</span>, com sede em Montes Claros/MG, é o
+        controlador dos dados pessoais tratados na plataforma para as finalidades de operação do
+        serviço descritas abaixo. Para condomínios que utilizam o SindFlow, o
         síndico ou a administradora responsável também atua como controlador dos dados dos
         moradores que ele mesmo cadastra e gerencia dentro da ferramenta.
       </p>

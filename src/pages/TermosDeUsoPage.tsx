@@ -1,8 +1,13 @@
+import { CNPJ, RAZAO_SOCIAL } from '../config/contato'
 import { LegalLayout } from './LegalLayout'
 
 export function TermosDeUsoPage() {
   return (
     <LegalLayout eyebrow="Legal" title="Termos de Uso" updatedAt="23 de agosto de 2026">
+      <p>
+        O SindFlow é um serviço oferecido por {RAZAO_SOCIAL}, inscrita no CNPJ{' '}
+        <span className="whitespace-nowrap">{CNPJ}</span>, com sede em Montes Claros/MG.
+      </p>
       <p>
         Estes Termos de Uso ("Termos") regulam o acesso e a utilização da plataforma SindFlow
         ("SindFlow", "nós", "nosso"), disponível em sindflow.com.br e em app.sindflow.com.br, por

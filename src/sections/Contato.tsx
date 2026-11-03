@@ -3,14 +3,21 @@ import { Button } from '../components/Button'
 import { RedeDeFundo } from '../components/RedeDeFundo'
 import { Reveal } from '../components/Reveal'
 import { SectionHeading } from '../components/SectionHeading'
+import { IconeInstagram } from '../components/IconeInstagram'
 import { SpotCard } from '../components/SpotCard'
 import {
   EMAIL,
+  INSTAGRAM_URL,
+  INSTAGRAM_USUARIO,
   MENSAGEM_GERAL,
   NOVA_ABA,
   WHATSAPP_EXIBICAO,
   whatsappLink,
 } from '../config/contato'
+
+// <wbr>: em telas bem estreitas o e-mail pode quebrar depois do "@" em vez de
+// empurrar a página para o lado (e o texto copiado continua igual)
+const [usuarioEmail, dominioEmail] = EMAIL.split('@')
 
 const canais = [
   {
@@ -23,9 +30,21 @@ const canais = [
   {
     icon: Mail,
     rotulo: 'E-mail',
-    valor: EMAIL,
+    valor: (
+      <>
+        {usuarioEmail}@<wbr />
+        {dominioEmail}
+      </>
+    ),
     href: `mailto:${EMAIL}`,
     externo: false,
+  },
+  {
+    icon: IconeInstagram,
+    rotulo: 'Instagram',
+    valor: INSTAGRAM_USUARIO,
+    href: INSTAGRAM_URL,
+    externo: true,
   },
 ]
 
@@ -47,7 +66,8 @@ export function Contato() {
           </Reveal>
         </div>
 
-        <ul className="grid gap-4">
+        {/* min-w-0: sem ele, o texto mais largo dos cards alarga a coluna além da tela */}
+        <ul className="grid min-w-0 gap-4">
           {canais.map((canal, i) => (
             <li key={canal.rotulo}>
               <Reveal delay={0.1 + i * 0.08}>

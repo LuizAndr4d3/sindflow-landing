@@ -2,7 +2,9 @@ import { Button } from '../components/Button'
 import { Constellation } from '../components/Constellation'
 import { Magnetic } from '../components/Magnetic'
 import { Reveal } from '../components/Reveal'
+import { EtiquetaTesteGratis } from '../components/TesteGratis'
 import { APP, MENSAGEM_GERAL, NOVA_ABA, whatsappLink } from '../config/contato'
+import { MOSTRAR_TESTE_GRATIS } from '../config/planos'
 
 export function CtaFinal() {
   return (
@@ -30,7 +32,10 @@ export function CtaFinal() {
             Agende uma demonstração gratuita de 20 minutos ou fale com o time para entender qual
             plano faz sentido para o seu condomínio.
           </p>
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+          {MOSTRAR_TESTE_GRATIS ? <EtiquetaTesteGratis className="mt-8" /> : null}
+          <div
+            className={`${MOSTRAR_TESTE_GRATIS ? 'mt-6' : 'mt-10'} flex flex-wrap items-center justify-center gap-4`}
+          >
             <Magnetic>
               <Button href={whatsappLink(MENSAGEM_GERAL)} {...NOVA_ABA}>
                 Agendar demonstração
